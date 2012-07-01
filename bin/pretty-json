@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'json'
+
+Signal.trap("INT") { puts "Terminating: #{$$}" }
+
+if STDIN.tty?
+  abort "The STDIN should not be a TTY."
+end
+
+while gets
+  begin
+    puts JSON.pretty_generate(JSON[$_])
+  rescue
+    warn $!
+    warn $!.backtrace.join("\n")
+  end
+end
+

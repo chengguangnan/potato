@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+Signal.trap("INT") { puts "Terminating: #{$$}" }
+
+if STDIN.tty?
+  abort "The STDIN should not be a TTY."
+end
+
+FACET = File.expand_path("../facet", __FILE__)
+
+cmd = %q(sed -E -e 's/^.+$/non-blank/' -e 's/^$/blank/')
+
+puts `#{cmd} | #{FACET}`

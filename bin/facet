@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+Signal.trap("INT") { puts "Terminating: #{$$}" }
+
+if STDIN.tty?
+  abort "The STDIN should not be a TTY."
+end
+
+cmd = %q(sort | uniq -c | sort -t$'\t' -k1,1 -nr)
+
+puts `#{cmd}`

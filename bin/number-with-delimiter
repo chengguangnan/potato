@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'action_view'
+
+extend ActionView::Helpers::NumberHelper
+
+STDIN.each do |line|
+  puts line.chomp.split("\t").map { |cell| cell == cell.to_i.to_s ? number_with_delimiter(cell.to_i) : cell }
+end
