@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'hirb'
+
+extend Hirb::Console
+
+table STDIN.map { |l| l.chomp.split("\t") }, :max_width=>`tput cols`.to_i

@@ -12,5 +12,6 @@ Gem::Specification.new do |s|
   s.bindir      = 'bin'
   s.executables = Dir.entries('bin')
 
-  s.add_dependency('actionpack', '~> 3.2.6')
+  s.add_dependency 'actionpack'
+  s.add_dependency 'hirb'
 end
